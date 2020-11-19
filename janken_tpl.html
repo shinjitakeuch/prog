@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<body>
+
+<header>
+  <p>
+    <img src="sazae.jpg">
+  </p>
+</header>
+
+<main>
+  <!--  <div id="start">はじめる</div> -->
+  
+  <div id="pc_hands"></div>
+  <div id="judgment">じゃんけん、ぽん！！</div>
+  <ul>
+      <li id="gu_btn"><img src="my-gu.jpg"></li>
+      <li id="cho_btn"><img src="my-cho.jpg"></li>
+      <li id="par_btn"><img src="my-pa.jpg"></li>
+  </ul>
+
+
+</main>
+
+<footer></footer>
+<script>
+//じゃんけん用のSCRIPTを書いてください
+
+$("#gu_btn").on("click",function(){
+  const r = Math.ceil(Math.random()*3); //小数点0.x~0.99999...
+  //1~5
+  console.log(r);
+
+    if(r==1){   
+      $("#judgment").html("勝ち！");
+      $("#pc_hands").html('<img src="cho..jpg">');
+      alert("さて、来週のサザエさんは\nマスオ、迷子になる\n浪平、朝食に食べたものが思い出せない\n磯野家、家庭崩壊か\nの3本です！")
+    }
+
+    if(r==2){   
+      $("#judgment").html("引き分け");
+      $("#pc_hands").html('<img src="gu-.jpg">');
+    }
+
+    if(r==3){   
+      $("#judgment").html("ざんねん。。");
+      $("#pc_hands").html('<img src="pa.jpg">');
+    }
+
+});
+
+
+
+
+$("#cho_btn").on("click",function(){
+  const r = Math.ceil(Math.random()*5); //小数点0.x~0.99999...
+  //1~5
+  console.log(r);
+
+  if(r==1){   
+      $("#judgment").html("勝ち！");
+      $("#pc_hands").html('<img src="pa.jpg">');
+      alert("さて、来週のサザエさんは\nマスオ、迷子になる\n浪平、朝食に食べたものが思い出せない\n磯野家、家庭崩壊か\nの3本です！")
+    }
+
+    if(r==2){   
+      $("#judgment").html("引き分け");
+      $("#pc_hands").html('<img src="cho..jpg">');
+    }
+
+    if(r==3){   
+      $("#judgment").html("ざんねん。。");
+      $("#pc_hands").html('<img src="gu-.jpg">');
+    }
+});
+
+
+
+
+$("#par_btn").on("click",function(){
+  const r = Math.ceil(Math.random()*5); //小数点0.x~0.99999...
+  //1~5
+  console.log(r);
+
+  if(r==1){   
+      $("#judgment").html("勝ち！");
+      $("#pc_hands").html('<img src="gu-.jpg">');
+      alert("さて、来週のサザエさんは\n \nマスオ、迷子になる\n \n浪平、朝食に食べたものが思い出せない\n \n磯野家、家庭崩壊か\n \nの3本です！")
+    }
+
+    if(r==2){   
+      $("#judgment").html("引き分け");
+      $("#pc_hands").html('<img src="pa.jpg">');
+    }
+
+    if(r==3){   
+      $("#judgment").html("ざんねん。。");
+      $("#pc_hands").html('<img src="cho..jpg">');
+    }
+});
+
+    
+
+</script>
+</body>
+</html>

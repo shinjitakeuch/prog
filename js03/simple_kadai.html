@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ChatApp</title>
+<link rel="stylesheet" href="simple.css">
+</head>
+<body>
+
+<!-- コンテンツ表示画面 -->
+
+<div class="container" id="container" style="display: none;">
+
+    <ul style="display: none;">
+        <li class="imgs" date-img="0"><img src="buke.png" width="100"></li>
+        <li class="imgs" date-img="1"><img src="caram.png" width="100"></li>
+        <li class="imgs" date-img="2"><img src="tuku.jpg" width="100"></li>
+    </ul>
+
+    <div id="output" class="messages"  style="height: 300px; overflow: auto; border: 1px solid black;"></div>
+
+    <input type="text" id="text" class="addTxt" placeholder="Text..."></input>
+    <button id="send" class="sendBtn">
+        <img src="plus.jpg">
+    </button>
+
+    
+</div>
+
+<!--/ コンテンツ表示画面 -->
+
+
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- JQuery -->
+
+
+<!--** 以下Firebase **-->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDkrEwP3COrQqV06sqfwpvHm7Y4VfRqcHA",
+    authDomain: "unit1-1d947.firebaseapp.com",
+    projectId: "unit1-1d947",
+    storageBucket: "unit1-1d947.appspot.com",
+    messagingSenderId: "683082046527",
+    appId: "1:683082046527:web:fddf34acfee3f0e2bfac8a"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  const ref = firebase.database().ref();
+  //ref()の中にディレクトリ構造を書くとそのデータ構造で
+  //保存できる！
+
+//containerの
+$("#container").slideDown(1500);
+
+  //アイコン処理
+  let d = 0;
+  const img = ["buke.png", "caram.png", "tuku.jpg"];
+  $(".imgs").on("click",function(){
+    d = $(this).attr("data-img");
+  });
+
+
+
+  //送信イベント
+  $("#send").on("click", function(){
+    
+      const text  = $("#text").val();
+      const msg   = {
+        text:  text ,    //送信名:値
+        icon:d          //iconの
+      };
+      ref.push(msg);    //サーバーにPush
+      $("#text").val("");
+  
+      //スクロール一番下のやつ
+      const messagesArea = document.getElementById('output');
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+  });
+
+
+
+//enterで送信イベント
+$("#text").on("keydown",function(e){
+    console.log(e.keyCode);
+    if(e.keyCode==13){
+        const text  = $("#text").val();
+        const msg   = {
+            text:  text  ,   //送信名:値
+            icon:d          //iconの
+      };
+      ref.push(msg);    //サーバーにPush
+      $("#text").val("");
+    }
+
+//スクロール一番下のやつ
+  const messagesArea = document.getElementById('output');
+  messagesArea.scrollTop = messagesArea.scrollHeight;
+});
+
+//受信イベント
+ref.on("child_added",function(data){
+    const v = data.val(); //dataオブジェクトの中のData取得
+    const k = data.key;   //KEYを取得(削除に必要らしい)
+    let h = '';
+    h += '<div class="element">';
+    h +='<img class="icon" src='+img[v.icon]+' width="50">';
+    h +='<p>'+v.text+'</p>'
+    h +='</div>';
+    $("#output").append(h);
+});
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,87 @@
+body{
+    background-image: url("../satu2.jpg");
+}
+.container{
+    position: absolute;
+    height: 400px;
+    width: 350px;
+    margin: auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 30px black;
+}
+.addTxt{
+    position: absolute;
+    height: 10px;
+    width: 70%;
+    margin: auto;
+    top: 320px;
+    right: 0;
+    left: 0;
+    outline: none;
+    border: none;
+    padding: 20px;
+    padding-right: 50px;
+    font-family: ;
+    border: 6px solid rgb(165, 206, 253);
+    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+  
+}
+.sendBtn{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    margin: auto;
+    top: 310px;
+    right: 20px;
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    border: 0;
+}
+.sendBtn img{
+    position: absolute;
+    height: 40px;
+    margin: auto;
+    top: 38px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+.element{
+    position: relative;
+    height: fit-content;
+    width: 55%;
+    right: 0;
+    margin: 10px;
+    text-align: left;
+    transition: .2s;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 2px;
+    padding-right: 100px;
+    word-wrap: break-word;
+    font-family: OCRB;
+    text-align: center;
+    background: #efefef;
+    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+    padding: 4%;
+    width: 240px;
+    margin: 10px;
+    border: 6px solid rgb(165, 206, 253);
+
+}
+.element:hover{
+    transform: scale(1.1)
+}
+.icon{
+    position: absolute;
+    margin: auto;
+    height: 45px;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+}
